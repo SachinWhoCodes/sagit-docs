@@ -44,7 +44,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="#" className="font-semibold">
+                <a href="https://github.com/SachinWhoCodes/sagit" className="font-semibold">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
                 </a>
