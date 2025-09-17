@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { DocsSidebar } from "./DocsSidebar"
+import { ThemeToggle } from "./ThemeToggle"
 import { ReactNode } from "react"
 
 interface DocsLayoutProps {
@@ -18,7 +19,7 @@ export function DocsLayout({ children }: DocsLayoutProps) {
             <div className="flex items-center h-full px-4">
               <SidebarTrigger className="lg:hidden" />
               <div className="flex-1" />
-              {/* Additional header content can go here */}
+              <ThemeToggle />
             </div>
           </header>
 

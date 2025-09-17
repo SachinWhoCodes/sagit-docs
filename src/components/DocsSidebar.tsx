@@ -9,6 +9,7 @@ import {
   MapPin, 
   GitBranch, 
   Clock,
+  Users,
   Search,
   Menu,
   X
@@ -62,6 +63,7 @@ const navigationItems = [
     ]
   },
   { title: "Roadmap", url: "/roadmap", icon: MapPin },
+  { title: "Team", url: "/team", icon: Users },
   { title: "Related Work", url: "/related-work", icon: GitBranch },
   { title: "Future Work", url: "/future-work", icon: Clock },
 ]

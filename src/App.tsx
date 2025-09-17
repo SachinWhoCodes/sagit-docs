@@ -9,6 +9,7 @@ import GettingStarted from "./pages/GettingStarted";
 import Architecture from "./pages/Architecture";
 import Roadmap from "./pages/Roadmap";
 import Development from "./pages/Development";
+import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/development" element={<Development />} />
             <Route path="/development/*" element={<Development />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/team" element={<Team />} />
             <Route path="/related-work" element={<div className="docs-prose"><h1>Related Work</h1><p>Research and related projects in the code analysis space.</p></div>} />
             <Route path="/future-work" element={<div className="docs-prose"><h1>Future Work</h1><p>Planned enhancements and long-term vision for Sagit.</p></div>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
