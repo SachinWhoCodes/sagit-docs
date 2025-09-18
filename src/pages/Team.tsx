@@ -23,101 +23,102 @@ interface TeamMember {
 const teamMembers: Record<string, TeamMember[]> = {
   "Project Owner": [
     {
-      name: "Alex Chen",
+      name: "Sachin Verma",
       role: "Project Owner & Founder",
-      bio: "Visionary leader with 10+ years of experience in developer tools and version control systems. Passionate about making development workflows more efficient.",
+      bio: "An Engineer Passionate about making development workflows more efficient.",
       avatar: "/placeholder.svg",
       initials: "AC",
       social: {
-        github: "alexchen",
-        linkedin: "alexchen-dev",
-        twitter: "alexchen_dev",
-        website: "alexchen.dev",
-        email: "alex@sagit.dev"
+        github: "SachinWhoCodes",
+        linkedin: "SachinWhoCodes",
+        twitter: "SachinWhoCodes",
+        website: "sachinwhocodes.dev",
+        email: "sachinwhocodes@gmail.com"
       },
       skills: ["Product Strategy", "Leadership", "Architecture"]
     }
-  ],
-  "Lead Maintainer": [
-    {
-      name: "Sarah Johnson",
-      role: "Lead Maintainer",
-      bio: "Full-stack engineer with expertise in Git internals and CLI development. Leads the technical direction and code reviews for Sagit.",
-      avatar: "/placeholder.svg",
-      initials: "SJ",
-      social: {
-        github: "sarahjohnson",
-        linkedin: "sarah-johnson-dev",
-        twitter: "sarahj_codes"
-      },
-      skills: ["Git Internals", "CLI Development", "Code Review"]
-    }
-  ],
-  "Core Maintainers": [
-    {
-      name: "Marcus Rodriguez",
-      role: "Core Maintainer",
-      bio: "Backend specialist focused on performance optimization and core Git operations. Ensures Sagit runs efficiently on all platforms.",
-      avatar: "/placeholder.svg",
-      initials: "MR",
-      social: {
-        github: "marcusrodriguez",
-        linkedin: "marcus-rodriguez-dev"
-      },
-      skills: ["Performance", "Backend", "Cross-platform"]
-    },
-    {
-      name: "Emma Thompson",
-      role: "Core Maintainer",
-      bio: "Frontend and UX specialist who ensures Sagit's CLI interface is intuitive and user-friendly for developers of all skill levels.",
-      avatar: "/placeholder.svg",
-      initials: "ET",
-      social: {
-        github: "emmathompson",
-        twitter: "emma_codes",
-        website: "emmathompson.design"
-      },
-      skills: ["UX Design", "Frontend", "CLI UX"]
-    }
-  ],
-  "Contributors": [
-    {
-      name: "David Kim",
-      role: "Active Contributor",
-      bio: "Open source enthusiast contributing to documentation and testing. Helps make Sagit more accessible to new users.",
-      avatar: "/placeholder.svg",
-      initials: "DK",
-      social: {
-        github: "davidkim",
-        linkedin: "david-kim-oss"
-      },
-      skills: ["Documentation", "Testing", "Community"]
-    },
-    {
-      name: "Lisa Wang",
-      role: "Active Contributor",
-      bio: "Security researcher ensuring Sagit follows best practices for secure Git operations and data handling.",
-      avatar: "/placeholder.svg",
-      initials: "LW",
-      social: {
-        github: "lisawang",
-        twitter: "lisa_security"
-      },
-      skills: ["Security", "Git Operations", "Best Practices"]
-    },
-    {
-      name: "James Miller",
-      role: "Community Contributor",
-      bio: "DevOps engineer contributing CI/CD improvements and deployment strategies for Sagit across different environments.",
-      avatar: "/placeholder.svg",
-      initials: "JM",
-      social: {
-        github: "jamesmiller",
-        linkedin: "james-miller-devops"
-      },
-      skills: ["DevOps", "CI/CD", "Deployment"]
-    }
   ]
+  // ,
+  // "Lead Maintainer": [
+  //   {
+  //     name: "Sarah Johnson",
+  //     role: "Lead Maintainer",
+  //     bio: "Full-stack engineer with expertise in Git internals and CLI development. Leads the technical direction and code reviews for Sagit.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "SJ",
+  //     social: {
+  //       github: "sarahjohnson",
+  //       linkedin: "sarah-johnson-dev",
+  //       twitter: "sarahj_codes"
+  //     },
+  //     skills: ["Git Internals", "CLI Development", "Code Review"]
+  //   }
+  // ],
+  // "Core Maintainers": [
+  //   {
+  //     name: "Marcus Rodriguez",
+  //     role: "Core Maintainer",
+  //     bio: "Backend specialist focused on performance optimization and core Git operations. Ensures Sagit runs efficiently on all platforms.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "MR",
+  //     social: {
+  //       github: "marcusrodriguez",
+  //       linkedin: "marcus-rodriguez-dev"
+  //     },
+  //     skills: ["Performance", "Backend", "Cross-platform"]
+  //   },
+  //   {
+  //     name: "Emma Thompson",
+  //     role: "Core Maintainer",
+  //     bio: "Frontend and UX specialist who ensures Sagit's CLI interface is intuitive and user-friendly for developers of all skill levels.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "ET",
+  //     social: {
+  //       github: "emmathompson",
+  //       twitter: "emma_codes",
+  //       website: "emmathompson.design"
+  //     },
+  //     skills: ["UX Design", "Frontend", "CLI UX"]
+  //   }
+  // ],
+  // "Contributors": [
+  //   {
+  //     name: "David Kim",
+  //     role: "Active Contributor",
+  //     bio: "Open source enthusiast contributing to documentation and testing. Helps make Sagit more accessible to new users.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "DK",
+  //     social: {
+  //       github: "davidkim",
+  //       linkedin: "david-kim-oss"
+  //     },
+  //     skills: ["Documentation", "Testing", "Community"]
+  //   },
+  //   {
+  //     name: "Lisa Wang",
+  //     role: "Active Contributor",
+  //     bio: "Security researcher ensuring Sagit follows best practices for secure Git operations and data handling.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "LW",
+  //     social: {
+  //       github: "lisawang",
+  //       twitter: "lisa_security"
+  //     },
+  //     skills: ["Security", "Git Operations", "Best Practices"]
+  //   },
+  //   {
+  //     name: "James Miller",
+  //     role: "Community Contributor",
+  //     bio: "DevOps engineer contributing CI/CD improvements and deployment strategies for Sagit across different environments.",
+  //     avatar: "/placeholder.svg",
+  //     initials: "JM",
+  //     social: {
+  //       github: "jamesmiller",
+  //       linkedin: "james-miller-devops"
+  //     },
+  //     skills: ["DevOps", "CI/CD", "Deployment"]
+  //   }
+  // ]
 }
 
 function SocialLinks({ social }: { social: TeamMember['social'] }) {
