@@ -81,44 +81,46 @@ const teamMembers: Record<string, TeamMember[]> = {
   //     skills: ["UX Design", "Frontend", "CLI UX"]
   //   }
   // ],
-  // "Contributors": [
-  //   {
-  //     name: "David Kim",
-  //     role: "Active Contributor",
-  //     bio: "Open source enthusiast contributing to documentation and testing. Helps make Sagit more accessible to new users.",
-  //     avatar: "/placeholder.svg",
-  //     initials: "DK",
-  //     social: {
-  //       github: "davidkim",
-  //       linkedin: "david-kim-oss"
-  //     },
-  //     skills: ["Documentation", "Testing", "Community"]
-  //   },
-  //   {
-  //     name: "Lisa Wang",
-  //     role: "Active Contributor",
-  //     bio: "Security researcher ensuring Sagit follows best practices for secure Git operations and data handling.",
-  //     avatar: "/placeholder.svg",
-  //     initials: "LW",
-  //     social: {
-  //       github: "lisawang",
-  //       twitter: "lisa_security"
-  //     },
-  //     skills: ["Security", "Git Operations", "Best Practices"]
-  //   },
-  //   {
-  //     name: "James Miller",
-  //     role: "Community Contributor",
-  //     bio: "DevOps engineer contributing CI/CD improvements and deployment strategies for Sagit across different environments.",
-  //     avatar: "/placeholder.svg",
-  //     initials: "JM",
-  //     social: {
-  //       github: "jamesmiller",
-  //       linkedin: "james-miller-devops"
-  //     },
-  //     skills: ["DevOps", "CI/CD", "Deployment"]
-  //   }
-  // ]
+  ,
+  "Contributors": [
+    {
+      name: "Vasu Burman",
+      role: "Active Contributor",
+      bio: "Open source enthusiast contributing to documentation and testing. Helps make Sagit more accessible to new users.",
+      avatar: "/placeholder.svg",
+      initials: "DK",
+      social: {
+        github: "vasuburman",
+        linkedin: "vasuburman"
+      },
+      skills: ["Documentation", "Testing", "Community"]
+    }
+    // ,
+    // {
+    //   name: "Lisa Wang",
+    //   role: "Active Contributor",
+    //   bio: "Security researcher ensuring Sagit follows best practices for secure Git operations and data handling.",
+    //   avatar: "/placeholder.svg",
+    //   initials: "LW",
+    //   social: {
+    //     github: "lisawang",
+    //     twitter: "lisa_security"
+    //   },
+    //   skills: ["Security", "Git Operations", "Best Practices"]
+    // },
+    // {
+    //   name: "James Miller",
+    //   role: "Community Contributor",
+    //   bio: "DevOps engineer contributing CI/CD improvements and deployment strategies for Sagit across different environments.",
+    //   avatar: "/placeholder.svg",
+    //   initials: "JM",
+    //   social: {
+    //     github: "jamesmiller",
+    //     linkedin: "james-miller-devops"
+    //   },
+    //   skills: ["DevOps", "CI/CD", "Deployment"]
+    // }
+  ]
 }
 
 function SocialLinks({ social }: { social: TeamMember['social'] }) {
