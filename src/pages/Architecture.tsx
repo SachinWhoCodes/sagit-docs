@@ -1,314 +1,195 @@
-import { Database, GitBranch, Layers, Zap } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Callout } from "@/components/Callout";
 
 export default function Architecture() {
   return (
-    <div className="docs-prose space-y-8">
-      <div className="space-y-4">
-        <h1>Architecture</h1>
-        <p className="text-xl text-muted-foreground">
-          Understanding Sagit's layered architecture and how it extends Git functionality.
-        </p>
+    <div className="prose-docs">
+      <h1>Architecture</h1>
+      
+      <p className="text-lg text-muted-foreground">
+        Sagit follows a <strong>hook-driven, CLI-orchestrated, local-first</strong> design. 
+        All analysis and storage happen on your machine with no external dependencies.
+      </p>
+
+      <h2>High-Level Design</h2>
+      
+      <div className="my-8 p-6 rounded-lg border border-border bg-card">
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
+            <div className="w-32 font-semibold text-brand">Git Hooks</div>
+            <div className="flex-1 text-muted-foreground">→</div>
+            <div className="w-32 font-semibold text-brand2">Runtime (JAR)</div>
+            <div className="flex-1 text-muted-foreground">→</div>
+            <div className="w-32 font-semibold text-success">Local Store</div>
+          </div>
+          
+          <div className="text-sm text-muted-foreground">
+            Hooks trigger semantic analysis → Runtime processes with JGit + JavaParser → 
+            Metadata appended to JSONL
+          </div>
+          
+          <div className="flex items-center gap-4 pt-4 border-t border-border">
+            <div className="w-32 font-semibold text-brand">CLI Commands</div>
+            <div className="flex-1 text-muted-foreground">→</div>
+            <div className="w-32 font-semibold text-brand2">Queries</div>
+            <div className="flex-1 text-muted-foreground">→</div>
+            <div className="w-32 font-semibold text-success">Results</div>
+          </div>
+          
+          <div className="text-sm text-muted-foreground">
+            User runs commands → CLI queries local store and Git → 
+            Outputs summaries, diffs, impact analysis
+          </div>
+        </div>
       </div>
 
-      {/* High-Level Architecture */}
-      <section className="space-y-6">
-        <h2>High-Level Architecture</h2>
-        <p>
-          Sagit is built as a layered system on top of JGit, providing Git compatibility 
-          while adding enhanced metadata tracking and analysis capabilities.
-        </p>
-        
-        <div className="grid gap-6">
-          <Card className="bg-accent/20">
-            <CardContent className="p-8">
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold mb-4">Sagit Architecture Layers</h3>
-                </div>
-                
-                {/* Layer 4 - CLI/API */}
-                <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Zap className="h-5 w-5 text-primary" />
-                    <h4 className="font-semibold">CLI & API Layer</h4>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Command-line interface built with Picocli, providing familiar Git commands 
-                    plus enhanced analysis features
-                  </p>
-                  <div className="mt-2 text-xs text-primary font-mono">
-                    sagit init, sagit add, sagit analyze, sagit search...
-                  </div>
-                </div>
+      <h2>Core Components</h2>
 
-                {/* Layer 3 - Analysis */}
-                <div className="bg-accent/30 p-4 rounded-lg border border-border">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Layers className="h-5 w-5 text-foreground" />
-                    <h4 className="font-semibold">Analysis Layer</h4>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Code analysis using JavaParser, metadata extraction, and AI integration
-                  </p>
-                  <div className="mt-2 text-xs font-mono text-muted-foreground">
-                    JavaParser • SQLite • HTTP AI Services
-                  </div>
-                </div>
+      <h3>1. Installer</h3>
+      
+      <p>
+        The <code>sagit setup</code> command installs everything needed for a repository:
+      </p>
+      
+      <ul>
+        <li>Copies the shaded JAR to <code>.sagit/sagit.jar</code></li>
+        <li>Creates Git hook scripts that invoke the runtime</li>
+        <li>Generates initial configuration files</li>
+      </ul>
 
-                {/* Layer 2 - Sagit Core */}
-                <div className="bg-secondary/50 p-4 rounded-lg border border-border">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Database className="h-5 w-5 text-foreground" />
-                    <h4 className="font-semibold">Sagit Core</h4>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Enhanced Git operations with metadata tracking and extensibility hooks
-                  </p>
-                  <div className="mt-2 text-xs font-mono text-muted-foreground">
-                    .sagit directory • Metadata storage • Extension points
-                  </div>
-                </div>
+      <Callout variant="info">
+        The installer is idempotent - safe to run multiple times.
+      </Callout>
 
-                {/* Layer 1 - JGit */}
-                <div className="bg-muted p-4 rounded-lg border border-border">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <GitBranch className="h-5 w-5 text-foreground" />
-                    <h4 className="font-semibold">JGit Foundation</h4>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Pure Java Git implementation providing core version control functionality
-                  </p>
-                  <div className="mt-2 text-xs font-mono text-muted-foreground">
-                    .git directory • Standard Git operations • Repository management
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <h3>2. Git Hooks Workflow</h3>
+      
+      <p>Sagit uses three Git hooks to integrate with your workflow:</p>
 
-      {/* Database Schema */}
-      <section className="space-y-4">
-        <h2>Database Schema</h2>
-        <p>
-          Sagit uses SQLite to store enhanced metadata alongside the standard Git repository.
-        </p>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Database className="h-5 w-5" />
-              <span>Metadata Tables</span>
-            </CardTitle>
-            <CardDescription>
-              Core tables for storing code analysis and tracking information
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              {/* Files Table */}
-              <div className="space-y-2">
-                <h4 className="font-semibold">files</h4>
-                <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                  <code>{`CREATE TABLE files (
-    id INTEGER PRIMARY KEY,
-    path TEXT NOT NULL UNIQUE,
-    hash TEXT NOT NULL,
-    size INTEGER,
-    language TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);`}</code>
-                </pre>
-              </div>
+      <h4>prepare-commit-msg</h4>
+      
+      <p>
+        Triggered before the commit message editor opens. Analyzes staged changes using 
+        JavaParser to detect types/methods modified. Drafts a Conventional Commits message:
+      </p>
+      
+      <ul>
+        <li><code>feat:</code> for new methods/classes</li>
+        <li><code>fix:</code> for modifications to existing code</li>
+        <li><code>docs:</code> for documentation changes</li>
+      </ul>
 
-              {/* Functions Table */}
-              <div className="space-y-2">
-                <h4 className="font-semibold">functions</h4>
-                <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                  <code>{`CREATE TABLE functions (
-    id INTEGER PRIMARY KEY,
-    file_id INTEGER REFERENCES files(id),
-    name TEXT NOT NULL,
-    signature TEXT,
-    start_line INTEGER,
-    end_line INTEGER,
-    complexity INTEGER,
-    ai_description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);`}</code>
-                </pre>
-              </div>
+      <h4>commit-msg</h4>
+      
+      <p>
+        Validates that the final commit message follows Conventional Commits format. 
+        Can be configured to enforce patterns.
+      </p>
 
-              {/* Variables Table */}
-              <div className="space-y-2">
-                <h4 className="font-semibold">variables</h4>
-                <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                  <code>{`CREATE TABLE variables (
-    id INTEGER PRIMARY KEY,
-    file_id INTEGER REFERENCES files(id),
-    function_id INTEGER REFERENCES functions(id),
-    name TEXT NOT NULL,
-    type TEXT,
-    scope TEXT,
-    line_number INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);`}</code>
-                </pre>
-              </div>
+      <h4>post-commit</h4>
+      
+      <p>
+        Runs after a successful commit. Performs semantic analysis on the commit diff 
+        and appends metadata to <code>.sagit/metadata.jsonl</code>.
+      </p>
 
-              {/* Dependencies Table */}
-              <div className="space-y-2">
-                <h4 className="font-semibold">dependencies</h4>
-                <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                  <code>{`CREATE TABLE dependencies (
-    id INTEGER PRIMARY KEY,
-    from_file_id INTEGER REFERENCES files(id),
-    to_file_id INTEGER REFERENCES files(id),
-    dependency_type TEXT, -- import, extends, implements, etc.
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);`}</code>
-                </pre>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+      <Callout variant="success">
+        Hooks are non-blocking and optimized for minimal overhead (typically &lt;200ms).
+      </Callout>
 
-      {/* Component Interaction */}
-      <section className="space-y-4">
-        <h2>Component Interactions</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Git Operations Flow</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">User executes <code>sagit add</code></span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">JGit stages file to index</span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">Sagit extracts metadata</span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">Metadata stored in SQLite</span>
-              </div>
-            </CardContent>
-          </Card>
+      <h3>3. Semantic Analysis Engine</h3>
+      
+      <p>Built on two core libraries:</p>
+      
+      <ul>
+        <li>
+          <strong>JGit</strong> - Pure Java Git implementation for diffing and object access
+        </li>
+        <li>
+          <strong>JavaParser</strong> - Analyzes Java AST to extract types, methods, and structure
+        </li>
+      </ul>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Analysis Pipeline</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">JavaParser parses source</span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">Extract functions & variables</span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">Build dependency graph</span>
-              </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                <span className="text-sm">AI enrichment (optional)</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <p>
+        The engine computes deltas like:
+      </p>
+      
+      <ul>
+        <li>Files added/modified/deleted</li>
+        <li>Types (classes/interfaces) delta</li>
+        <li>Methods delta</li>
+        <li>Top-level directory breakdown</li>
+      </ul>
 
-      {/* Directory Structure */}
-      <section className="space-y-4">
-        <h2>Directory Structure</h2>
-        <p>
-          Sagit creates a dual directory structure maintaining Git compatibility:
-        </p>
-        
-        <Card>
-          <CardContent className="p-6">
-            <pre className="bg-code-bg p-4 rounded-md text-sm overflow-x-auto">
-              <code>{`project-root/
-├── .git/                    # Standard Git repository
-│   ├── objects/
-│   ├── refs/
-│   ├── index
-│   └── config
-├── .sagit/                  # Sagit enhanced metadata
-│   ├── metadata.db          # SQLite database
-│   ├── config.json          # Sagit configuration
-│   ├── analysis/            # Analysis results cache
-│   └── ai-cache/            # AI descriptions cache
-├── src/
-│   └── main/java/
-└── pom.xml`}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      </section>
+      <h3>4. Metadata Store</h3>
+      
+      <p>
+        All metadata is stored in <code>.sagit/metadata.jsonl</code> as append-only 
+        JSON Lines. Each line is a commit record with:
+      </p>
+      
+      <ul>
+        <li>Commit ID and timestamp</li>
+        <li>File statistics (added/modified/deleted)</li>
+        <li>Semantic deltas (types, methods)</li>
+        <li>Directory breakdown</li>
+      </ul>
 
-      {/* Design Principles */}
-      <section className="space-y-4">
-        <h2>Design Principles</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Git Compatibility</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                All standard Git operations work unchanged. Sagit is a superset, not a replacement.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Incremental Enhancement</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Enhanced features are layered on top without breaking existing workflows.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Performance Focus</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Metadata operations are optimized and can run asynchronously when possible.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Extensibility</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Plugin architecture allows custom analysis and integration with external tools.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <p>
+        The CLI can export this to CSV for analysis in spreadsheets or data tools.
+      </p>
+
+      <h2>CLI Architecture</h2>
+      
+      <p>
+        The CLI uses the same runtime JAR but operates in query mode. Commands like 
+        <code>diff</code> and <code>describe</code> read directly from Git and the 
+        metadata store without triggering hooks.
+      </p>
+
+      <h3>Query Flow</h3>
+      
+      <ol>
+        <li>User runs <code>sagit describe --since main</code></li>
+        <li>CLI computes diff between <code>main..HEAD</code> using JGit</li>
+        <li>Semantic analyzer processes each changed file</li>
+        <li>Results aggregated and formatted (Markdown or JSON)</li>
+        <li>Output printed to stdout</li>
+      </ol>
+
+      <h2>Design Principles</h2>
+
+      <h3>Local-First</h3>
+      
+      <p>
+        No network calls, no external services. Everything runs on your machine 
+        using local Git objects and metadata.
+      </p>
+
+      <h3>Git-Compatible</h3>
+      
+      <p>
+        Sagit doesn't modify Git internals or objects. It reads from <code>.git</code> 
+        and writes to <code>.sagit</code>. You can disable Sagit at any time without 
+        affecting your Git history.
+      </p>
+
+      <h3>Minimal Overhead</h3>
+      
+      <p>
+        Hooks are optimized for speed. Most operations complete in under 200ms. 
+        The shaded JAR (~15MB) bundles all dependencies.
+      </p>
+
+      <h3>Extensible</h3>
+      
+      <p>
+        The metadata format is open and documented. You can build your own tools 
+        on top of <code>metadata.jsonl</code> or extend Sagit with plugins.
+      </p>
+
+      <Callout variant="info" title="Learn More">
+        For implementation details, see the <a href="/development">Development Guide</a> 
+        and explore the source code on GitHub.
+      </Callout>
     </div>
-  )
+  );
 }

@@ -1,199 +1,147 @@
-import { Terminal, Download, CheckCircle } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom"
+import { CodeBlock } from "@/components/CodeBlock";
+import { Callout } from "@/components/Callout";
 
 export default function GettingStarted() {
   return (
-    <div className="docs-prose space-y-8">
-      <div className="space-y-4">
-        <h1>Getting Started</h1>
-        <p className="text-xl text-muted-foreground">
-          Learn how to install and set up Sagit in your development environment.
-        </p>
-      </div>
+    <div className="prose-docs">
+      <h1>Getting Started</h1>
+      
+      <p className="text-lg text-muted-foreground">
+        Get up and running with Sagit in minutes. This guide covers installation, 
+        initial setup, and your first commit with Sagit.
+      </p>
 
-      {/* Prerequisites */}
-      <section className="space-y-4">
-        <h2>Prerequisites</h2>
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <span>Java 11 or higher</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <span>Maven 3.6 or higher</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <span>Git 2.0 or higher</span>
-          </div>
-        </div>
-      </section>
+      <h2>Prerequisites</h2>
+      
+      <ul>
+        <li><strong>Java 17+</strong> - Required for building and running Sagit</li>
+        <li><strong>Git</strong> - Sagit enhances your existing Git workflow</li>
+        <li><strong>Maven</strong> - For building from source</li>
+      </ul>
 
-      {/* Installation Methods */}
-      <section className="space-y-6">
-        <h2>Installation</h2>
-        
-        <div className="grid gap-6">
-          {/* Maven */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center space-x-2">
-                <Badge variant="maven">Maven</Badge>
-                <CardTitle className="text-xl">Maven Dependency</CardTitle>
-              </div>
-              <CardDescription>
-                Add Sagit to your Maven project
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <pre className="bg-code-bg p-4 rounded-md text-sm overflow-x-auto">
-                <code>{`<dependency>
-    <groupId>com.sagit</groupId>
-    <artifactId>sagit-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
-</dependency>`}</code>
-              </pre>
-            </CardContent>
-          </Card>
+      <Callout variant="info" title="System Requirements">
+        Sagit has been tested on Linux, macOS, and Windows (PowerShell). 
+        It works with any Git repository.
+      </Callout>
 
-          {/* CLI Installation */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center space-x-2">
-                <Badge variant="cli">CLI</Badge>
-                <CardTitle className="text-xl">Command Line Tool</CardTitle>
-              </div>
-              <CardDescription>
-                Install the Sagit CLI globally
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <pre className="bg-code-bg p-4 rounded-md text-sm overflow-x-auto">
-                <code>{`# Download the latest release
-curl -L https://github.com/sagit/releases/latest/download/sagit.jar -o sagit.jar
+      <h2>Building Sagit</h2>
+      
+      <p>Clone the repository and build the shaded JAR:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`git clone https://github.com/sagit-tool/sagit.git
+cd sagit
+mvn -q -DskipTests package`}
+      />
 
-# Make it executable (Unix/Linux/macOS)
-chmod +x sagit.jar
+      <p>
+        The shaded JAR will be created at <code>target/sagit-0.1.0.jar</code>. 
+        This single JAR contains all dependencies.
+      </p>
 
-# Add to your PATH (optional)
-export PATH=$PATH:/path/to/sagit`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <h2>Per-Repository Setup</h2>
+      
+      <p>Navigate to your Git repository and run:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`java -jar /path/to/sagit-0.1.0.jar setup`}
+      />
 
-      {/* Quick Setup */}
-      <section className="space-y-4">
-        <h2>Quick Setup</h2>
-        <p>
-          Once installed, you can quickly set up Sagit in any directory:
-        </p>
-        
-        <Card className="bg-accent/20">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Terminal className="h-5 w-5 text-primary" />
-                <span className="font-semibold">Initialize Repository</span>
-              </div>
-              <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                <code>{`# Initialize a new Sagit repository
-sagit init
+      <p>This command:</p>
+      <ul>
+        <li>Copies the Sagit JAR to <code>.sagit/sagit.jar</code></li>
+        <li>Installs Git hooks: <code>prepare-commit-msg</code>, <code>commit-msg</code>, <code>post-commit</code></li>
+        <li>Creates <code>.sagit/config.json</code> for configuration</li>
+        <li>Creates <code>.sagit/tests.map</code> for test mapping rules</li>
+      </ul>
 
-# This creates both .git and .sagit directories
-# .git - Standard Git repository
-# .sagit - Enhanced metadata storage`}</code>
-              </pre>
-            </div>
-          </CardContent>
-        </Card>
+      <Callout variant="success">
+        You only need to run setup once per repository!
+      </Callout>
 
-        <Card className="bg-accent/20">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Terminal className="h-5 w-5 text-primary" />
-                <span className="font-semibold">Add Files</span>
-              </div>
-              <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-                <code>{`# Add files with enhanced tracking
-sagit add src/main/java/MyClass.java
+      <h2>Your First Commit</h2>
+      
+      <p>Make a change to your code and commit as usual:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`echo "public class Demo {}" > src/Demo.java
+git add src/Demo.java
+git commit`}
+      />
 
-# Add all files in directory
-sagit add .
+      <p>
+        Sagit's <code>prepare-commit-msg</code> hook will automatically draft a 
+        Conventional Commits-style message based on semantic analysis. After the commit, 
+        metadata is recorded to <code>.sagit/metadata.jsonl</code>.
+      </p>
 
-# View status (works like Git)
-sagit status`}</code>
-              </pre>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+      <h3>View Commit Metadata</h3>
+      
+      <CodeBlock
+        language="bash"
+        code={`sagit meta last`}
+      />
 
-      {/* Verification */}
-      <section className="space-y-4">
-        <h2>Verify Installation</h2>
-        <p>
-          Confirm that Sagit is working correctly:
-        </p>
-        <Card>
-          <CardContent className="p-6">
-            <pre className="bg-code-bg p-3 rounded-md text-sm overflow-x-auto">
-              <code>{`# Check version
-sagit --version
+      <p>This displays the metadata for your last commit in JSON format.</p>
 
-# View help
-sagit --help
+      <h2>Platform-Specific Setup</h2>
+      
+      <h3>Linux / macOS</h3>
+      
+      <p>Create a shell script for convenience:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`#!/bin/bash
+java -jar ~/.sagit/sagit-0.1.0.jar "$@"`}
+      />
 
-# Test basic functionality
-mkdir test-repo && cd test-repo
-sagit init
-echo "Hello Sagit" > test.txt
-sagit add test.txt
-sagit status`}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      </section>
+      <p>Make it executable and add to your PATH:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`chmod +x ~/bin/sagit
+export PATH="$HOME/bin:$PATH"`}
+      />
 
-      {/* Next Steps */}
-      <section className="space-y-4">
-        <h2>Next Steps</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Card className="transition-smooth hover:shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-lg">User Guide</CardTitle>
-              <CardDescription>
-                Learn about all available CLI commands
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button asChild variant="outline" className="w-full">
-                <Link to="/user-guide">Explore Commands</Link>
-              </Button>
-            </CardContent>
-          </Card>
-          
-          <Card className="transition-smooth hover:shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-lg">Architecture</CardTitle>
-              <CardDescription>
-                Understand how Sagit works internally
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button asChild variant="outline" className="w-full">
-                <Link to="/architecture">View Architecture</Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <h3>Windows (PowerShell)</h3>
+      
+      <p>Create a <code>sagit.ps1</code> script:</p>
+      
+      <CodeBlock
+        language="powershell"
+        code={`java -jar "$env:USERPROFILE\\.sagit\\sagit-0.1.0.jar" $args`}
+      />
+
+      <p>Or use a batch file <code>sagit.bat</code>:</p>
+      
+      <CodeBlock
+        language="batch"
+        code={`@echo off
+java -jar "%USERPROFILE%\\.sagit\\sagit-0.1.0.jar" %*`}
+      />
+
+      <h2>Verify Installation</h2>
+      
+      <p>Check that everything is working correctly:</p>
+      
+      <CodeBlock
+        language="bash"
+        code={`sagit verify`}
+      />
+
+      <p>
+        This command checks for the runtime JAR, Git hooks, configuration files, 
+        and test mapping. If all checks pass, you're ready to go!
+      </p>
+
+      <Callout variant="info" title="Next Steps">
+        Now that Sagit is installed, explore the <a href="/user-guide">User Guide</a> 
+        to learn about all available commands and features.
+      </Callout>
     </div>
-  )
+  );
 }

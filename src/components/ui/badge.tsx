@@ -12,9 +12,6 @@ const badgeVariants = cva(
         secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
-        java: "border-transparent bg-badge-java text-white hover:bg-badge-java/80",
-        maven: "border-transparent bg-badge-maven text-white hover:bg-badge-maven/80",
-        cli: "border-transparent bg-badge-cli text-white hover:bg-badge-cli/80",
       },
     },
     defaultVariants: {

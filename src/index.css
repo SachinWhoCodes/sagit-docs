@@ -1,124 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Sagit Documentation Design System - Professional & Clean */
-
 @layer base {
   :root {
-    /* Core Colors - Professional Blue & Gray Palette */
-    --background: 0 0% 100%;
-    --foreground: 222 14% 20%;
-
+    --background: 220 20% 97%;
+    --foreground: 220 15% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222 14% 20%;
-
+    --card-foreground: 220 15% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 14% 20%;
-
-    /* Primary - Professional Blue */
+    --popover-foreground: 220 15% 15%;
     --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
-
-    /* Secondary - Subtle Gray */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 14% 20%;
-
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-
-    --accent: 217 91% 95%;
-    --accent-foreground: 217 91% 60%;
-
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 15% 15%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 190 95% 55%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
     --ring: 217 91% 60%;
-
     --radius: 0.5rem;
-
-    /* Documentation Specific Colors */
-    --docs-nav: 220 14% 99%;
-    --docs-nav-foreground: 222 14% 20%;
-    --docs-nav-accent: 217 91% 95%;
-    --docs-nav-border: 220 13% 91%;
     
-    /* Hero Section */
-    --hero-bg: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(217 91% 95% / 0.3));
-    --hero-accent: 217 91% 60%;
+    /* Sagit Brand Colors */
+    --brand: 217 91% 60%;
+    --brand-2: 190 95% 55%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --danger: 0 84% 60%;
     
-    /* Code Blocks */
-    --code-bg: 220 14% 96%;
-    --code-foreground: 222 14% 20%;
-    
-    /* Badges */
-    --badge-java: 31 100% 50%;
-    --badge-maven: 4 90% 58%;
-    --badge-cli: 158 64% 52%;
-    
-    /* Sidebar */
-    --sidebar-background: 220 14% 99%;
-    --sidebar-foreground: 222 14% 20%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 217 91% 95%;
-    --sidebar-accent-foreground: 217 91% 60%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
+    /* Doc-specific */
+    --bg-main: 220 20% 97%;
+    --bg-panel: 0 0% 100%;
+    --code-bg: 220 15% 94%;
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-border: 220 15% 88%;
   }
 
   .dark {
-    /* Dark Mode - Professional Dark Blue & Gray */
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
-
+    --background: 222 47% 7%;
+    --foreground: 210 20% 78%;
+    --card: 220 35% 9%;
+    --card-foreground: 210 20% 78%;
+    --popover: 220 35% 9%;
+    --popover-foreground: 210 20% 78%;
     --primary: 217 91% 60%;
-    --primary-foreground: 224 71% 4%;
-
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 213 31% 91%;
-
-    --muted: 215 28% 17%;
-    --muted-foreground: 217 11% 65%;
-
-    --accent: 215 28% 17%;
-    --accent-foreground: 217 91% 60%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 213 31% 91%;
-
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 210 20% 78%;
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 15% 62%;
+    --accent: 190 95% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 25% 14%;
+    --input: 220 25% 14%;
     --ring: 217 91% 60%;
+    
+    /* Sagit Brand Colors - Dark */
+    --brand: 217 91% 60%;
+    --brand-2: 190 95% 55%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 84% 60%;
+    
+    /* Doc-specific - Dark */
+    --bg-main: 222 47% 7%;
+    --bg-panel: 220 35% 9%;
+    --code-bg: 220 30% 11%;
+    --sidebar-bg: 220 35% 9%;
+    --sidebar-border: 220 25% 14%;
+  }
+}
 
-    /* Documentation Dark Mode */
-    --docs-nav: 224 71% 4%;
-    --docs-nav-foreground: 213 31% 91%;
-    --docs-nav-accent: 215 28% 17%;
-    --docs-nav-border: 215 28% 17%;
-    
-    --hero-bg: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(215 28% 17% / 0.3));
-    --hero-accent: 217 91% 60%;
-    
-    --code-bg: 215 28% 17%;
-    --code-foreground: 213 31% 91%;
-    
-    --sidebar-background: 224 71% 4%;
-    --sidebar-foreground: 213 31% 91%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 224 71% 4%;
-    --sidebar-accent: 215 28% 17%;
-    --sidebar-accent-foreground: 217 91% 60%;
-    --sidebar-border: 215 28% 17%;
-    --sidebar-ring: 217 91% 60%;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .terminal-output {
+    @apply font-mono text-sm whitespace-pre-wrap;
+  }
+  
+  .prose-docs {
+    @apply max-w-none;
+  }
+  
+  .prose-docs h1 {
+    @apply text-4xl font-bold mb-4 mt-8;
+  }
+  
+  .prose-docs h2 {
+    @apply text-3xl font-semibold mb-3 mt-8 border-b border-border pb-2;
+  }
+  
+  .prose-docs h3 {
+    @apply text-2xl font-semibold mb-2 mt-6;
+  }
+  
+  .prose-docs p {
+    @apply mb-4 leading-7;
+  }
+  
+  .prose-docs ul, .prose-docs ol {
+    @apply mb-4 ml-6;
+  }
+  
+  .prose-docs li {
+    @apply mb-2;
+  }
+  
+  .prose-docs code {
+    @apply bg-code-bg px-1.5 py-0.5 rounded text-sm;
+  }
+  
+  .prose-docs pre {
+    @apply bg-code-bg p-4 rounded-lg overflow-x-auto mb-4;
   }
 }
 
@@ -128,37 +146,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
-  
-  /* Documentation Typography */
-  .docs-prose h1 {
-    @apply scroll-m-20 text-4xl font-bold tracking-tight;
-  }
-  
-  .docs-prose h2 {
-    @apply scroll-m-20 border-b border-border pb-2 text-3xl font-semibold tracking-tight;
-  }
-  
-  .docs-prose h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
-  }
-  
-  .docs-prose p {
-    @apply leading-7 text-muted-foreground;
-  }
-  
-  .docs-prose code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-  }
-  
-  /* Hero Gradient Background */
-  .hero-gradient {
-    background: var(--hero-bg);
-  }
-  
-  /* Smooth Transitions */
-  .transition-smooth {
-    @apply transition-all duration-300 ease-in-out;
+    @apply bg-background text-foreground;
   }
 }

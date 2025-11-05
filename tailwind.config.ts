@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,34 +51,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-        // Documentation specific colors
-        docs: {
-          nav: "hsl(var(--docs-nav))",
-          "nav-foreground": "hsl(var(--docs-nav-foreground))",
-          "nav-accent": "hsl(var(--docs-nav-accent))",
-          "nav-border": "hsl(var(--docs-nav-border))",
-        },
-        // Badge colors
-        badge: {
-          java: "hsl(var(--badge-java))",
-          maven: "hsl(var(--badge-maven))",
-          cli: "hsl(var(--badge-cli))",
-        },
-        // Code colors
-        code: {
-          bg: "hsl(var(--code-bg))",
-          foreground: "hsl(var(--code-foreground))",
-        },
+        brand: "hsl(var(--brand))",
+        brand2: "hsl(var(--brand-2))",
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
+        danger: "hsl(var(--danger))",
+        "bg-main": "hsl(var(--bg-main))",
+        "bg-panel": "hsl(var(--bg-panel))",
+        "code-bg": "hsl(var(--code-bg))",
+        "sidebar-bg": "hsl(var(--sidebar-bg))",
+        "sidebar-border": "hsl(var(--sidebar-border))",
       },
       borderRadius: {
         lg: "var(--radius)",
