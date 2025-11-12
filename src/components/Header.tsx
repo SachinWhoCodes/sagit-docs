@@ -24,9 +24,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           </Button>
           
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand to-brand2 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">S</span>
-            </div>
+            <img src="/sagit_logo.png" alt="Sagit Logo" className="w-8 h-8 rounded-lg" />
             <span className="font-bold text-xl">Sagit</span>
           </Link>
         </div>

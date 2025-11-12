@@ -7,7 +7,7 @@ const team = [
     name: "Sachin Verma",
     role: "Lead Developer",
     bio: "Full-stack engineer passionate about developer tools and semantic analysis.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sachin",
+    avatar: "https://media.licdn.com/dms/image/v2/D4D03AQFiXOvEL1_nuQ/profile-displayphoto-scale_200_200/B4DZmA9qhxH4AY-/0/1758805287785?e=1764806400&v=beta&t=b-xzR8_Sw47tfF7VcBIK16GdDxEDw3qiPErVcN39KEw",
     github: "https://github.com/SachinWhoCodes",
     linkedin: "https://linkedin.com/in/SachinWhoCodes",
   },
@@ -15,7 +15,7 @@ const team = [
     name: "Vasu Burman",
     role: "Developer",
     bio: "Software engineer focused on Git internals and metadata persistence.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Vasu",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQHIO00c10F0eA/profile-displayphoto-shrink_200_200/B4EZYm2quGHgAg-/0/1744408589025?e=1764806400&v=beta&t=lt9oDNhlEC2Rwe-4ys2CTDyYHmj4rlKHHeUxZ6BnUf8",
     github: "https://github.com/vasuburman",
     linkedin: "https://linkedin.com/in/vasuburman",
   },
@@ -23,7 +23,7 @@ const team = [
     name: "Dr. Puneet K. Johari",
     role: "Reviewer",
     bio: "Academic advisor providing guidance on research and implementation.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Advisor",
+    avatar: "https://web.mitsgwalior.in/images/Departments/information_technology/image012.webp",
   },
 ];
 
