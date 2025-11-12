@@ -32,16 +32,16 @@ export function Header({ onMenuClick }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="hidden sm:flex">
+          {/* <Button variant="ghost" size="icon" className="hidden sm:flex">
             <Search className="h-5 w-5" />
-          </Button>
+          </Button> */}
           
           <Button
             variant="ghost"
             size="icon"
             asChild
           >
-            <a href="https://github.com/sagit-tool/sagit" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/SachinWhoCodes/sagit" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
             </a>
           </Button>

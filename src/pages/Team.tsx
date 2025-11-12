@@ -8,8 +8,8 @@ const team = [
     role: "Lead Developer",
     bio: "Full-stack engineer passionate about developer tools and semantic analysis.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sachin",
-    github: "https://github.com/sachinverma",
-    linkedin: "https://linkedin.com/in/sachinverma",
+    github: "https://github.com/SachinWhoCodes",
+    linkedin: "https://linkedin.com/in/SachinWhoCodes",
   },
   {
     name: "Vasu Burman",
@@ -20,7 +20,7 @@ const team = [
     linkedin: "https://linkedin.com/in/vasuburman",
   },
   {
-    name: "Faculty Advisor",
+    name: "Dr. Puneet K. Johari",
     role: "Reviewer",
     bio: "Academic advisor providing guidance on research and implementation.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Advisor",

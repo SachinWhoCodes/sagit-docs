@@ -12,7 +12,7 @@ export default function Index() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand/5 via-transparent to-transparent" />
         
         <div className="flex items-center justify-center gap-2 mb-6">
-          <Badge variant="secondary">Version 1.0-SNAPSHOT</Badge>
+          <Badge variant="secondary">Version 1.0.0</Badge>
           <Badge variant="outline">Java 17+</Badge>
           <Badge variant="outline">Maven</Badge>
         </div>
@@ -22,7 +22,7 @@ export default function Index() {
         </h1>
         
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Source Code Analysis & Git Indexing Tool
+          Semantic Analysis & Git Indexing Tool
         </p>
         
         <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
@@ -39,7 +39,7 @@ export default function Index() {
           </Button>
           
           <Button size="lg" variant="outline" asChild>
-            <a href="https://github.com/sagit-tool/sagit" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/SachinWhoCodes/sagit" target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 w-4 h-4" />
               View on GitHub
             </a>
