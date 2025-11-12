@@ -23,7 +23,7 @@ const team = [
     name: "Dr. Puneet K. Johari",
     role: "Reviewer",
     bio: "Academic advisor providing guidance on research and implementation.",
-    avatar: "https://web.mitsgwalior.in/images/Departments/information_technology/image012.webp",
+    avatar: "https://media.licdn.com/dms/image/v2/C4E03AQFBR18RO-LTnQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1616564055125?e=1764806400&v=beta&t=pGQmDO1D4p4K8YMs7NfkuxRI1ZHuyiGc4k9JEjrbrVY",
   },
 ];
 
