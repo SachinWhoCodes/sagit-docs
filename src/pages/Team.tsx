@@ -16,7 +16,7 @@ const team = [
     role: "Developer",
     bio: "Software engineer focused on Git internals and metadata persistence.",
     avatar: "https://media.licdn.com/dms/image/v2/D4D35AQGYzj0z-DXkCg/profile-framedphoto-shrink_200_200/B4DZhbKTE2G8AY-/0/1753876083325?e=1763838000&v=beta&t=AvKNexYLkm3g6RR732sNTgtypC3MN3WrdRKRBKi5rdk",
-    github: "https://github.com/kaydee19",
+    github: "https://github.com/krishnawhocodes",
     linkedin: "https://linkedin.com/in/kaydee19",
   },
   {
